@@ -1,12 +1,18 @@
+require("./database");
+require("dotenv").config();
+
 const express = require("express");
 const swaggerUiExpress = require("swagger-ui-express");
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerSpec = require("./swagger");
-require("./database");
+const userRoutes = require("./routes/user");
 
 const app = express();
+const port = process.env.PORT || 3000;
 
-const PORT = process.env.PORT || 3000;
+// middleware
+app.use(express.json());
+app.use("/api", userRoutes);
 
 //Uses
 app.use(
@@ -15,8 +21,4 @@ app.use(
   swaggerUiExpress.setup(swaggerJsDoc(swaggerSpec))
 );
 
-app.get("/", (req, res) => {
-  res.send("welcome to my API");
-});
-
-app.listen(PORT, () => console.log(`server listening on port ${PORT}`));
+app.listen(port, () => console.log(`server listening on port ${port}`));
