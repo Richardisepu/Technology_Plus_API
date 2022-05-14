@@ -5,14 +5,15 @@ const express = require("express");
 const swaggerUiExpress = require("swagger-ui-express");
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerSpec = require("./swagger");
-const userRoutes = require("./routes/user");
+const middlewares = require("./routes");
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// middleware
 app.use(express.json());
-app.use("/api", userRoutes);
+
+// middlewares
+middlewares(app);
 
 //Uses
 app.use(
