@@ -1,15 +1,17 @@
-const cartSchema = require("../../models/cart");
+const CartSchema = require("../../models/cart");
 
 const createCart = async (req, res) => {
-  const cart = cartSchema(req.body);
+  const cart = new CartSchema(req.body);
 
   try {
+    cart.validateSync();
     const cartCreated = await cart.save();
     if (cartCreated) {
-      res.json(cartCreated);
+      res.status(201);
+      return res.json(cartCreated);
     }
   } catch (err) {
-    res.json({ message: err });
+    return res.json({ message: err.message });
   }
 };
 
