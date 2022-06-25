@@ -1,8 +1,9 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, CssBaseline } from "@material-ui/core";
-import products from "../product-data";
-import Product from "../components/Product";
-
+// import products from "../product-data";
+import Product from "../components/Products/CardProduct";
+import { useEffect, useState } from "react";
+import { getProductsService } from "../services/productServices";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -11,7 +12,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Products = () => {
+  const [products, setProducts] = useState([]);
   const classes = useStyles();
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const response = await getProductsService();
+      console.log("response: ", response);
+      setProducts(response);
+    };
+
+    getProducts();
+  }, []);
 
   return (
     <>
