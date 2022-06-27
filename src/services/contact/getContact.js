@@ -4,7 +4,7 @@ const getContact = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const contact = await contactSchema.find({ _id: id });
+    const contact = await contactSchema.findOne({ _id: id });
     if (contact) res.json(contact);
   } catch (err) {
     res.json({ message: err });

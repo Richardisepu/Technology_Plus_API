@@ -4,7 +4,7 @@ const getProduct = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const product = await productSchema.find({ _id: id });
+    const product = await productSchema.findOne({ _id: id });
     if (product) res.json(product);
   } catch (err) {
     res.json({ message: err });

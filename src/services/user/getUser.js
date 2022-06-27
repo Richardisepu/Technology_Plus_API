@@ -4,7 +4,7 @@ const getUser = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const user = await userSchema.find({ _id: id });
+    const user = await userSchema.findOne({ _id: id });
     if (user) res.json(user);
   } catch (err) {
     res.json({ message: err });

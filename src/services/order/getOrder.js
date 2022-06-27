@@ -4,7 +4,7 @@ const getOrder = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const order = await orderSchema.find({ _id: id });
+    const order = await orderSchema.findOne({ _id: id });
     if (order) res.json(order);
   } catch (err) {
     res.json({ message: err });
