@@ -15,12 +15,6 @@ const port = process.env.PORT || 3000;
 // Response Json
 app.use(express.json());
 
-// middlewares
-middlewares(app);
-
-//AdminBro
-adminBro(app);
-
 //CORS
 app.get("/cors", (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
@@ -32,6 +26,12 @@ app.use(
     origin: "*",
   })
 );
+
+// middlewares
+middlewares(app);
+
+//AdminBro
+adminBro(app);
 
 //Uses
 app.use(
