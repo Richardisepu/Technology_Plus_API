@@ -13,7 +13,7 @@ router.get("/users", (req, res) => {
   getUsers(req, res);
 });
 
-router.get("/user/:id", (req, res) => {
+router.get("/user", (req, res) => {
   getUser(req, res);
 });
 

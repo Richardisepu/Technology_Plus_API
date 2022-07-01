@@ -6,6 +6,7 @@ const createUser = async (req, res) => {
   try {
     const userCreated = await user.save();
     if (userCreated) {
+      req.status(201);
       res.json(userCreated);
     }
   } catch (err) {

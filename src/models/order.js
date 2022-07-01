@@ -26,12 +26,30 @@ const products = new mongoose.Schema(
   { _id: false }
 );
 
+const address = mongoose.Schema({
+  firstName: {
+    type: String,
+  },
+  lastName: {
+    type: String,
+  },
+  address1: {
+    type: String,
+  },
+  email: {
+    type: String,
+  },
+  city: {
+    type: String,
+  },
+  postCode: {
+    type: String,
+  },
+});
+
 const orderSchema = mongoose.Schema({
   products: [products],
-  // address: {
-  //   type: String,
-  //   required: true,
-  // },
+  address,
 
   payment_method: {
     type: String,

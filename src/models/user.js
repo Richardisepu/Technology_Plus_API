@@ -9,16 +9,11 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  rut: {
-    type: String,
-    required: true,
-  },
   address: {
-    type: String,
-    required: true,
+    type: Object,
   },
   id_rol: {
-    type: String,
+    type: Array,
   },
 });
 
